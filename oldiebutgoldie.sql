@@ -16,50 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `location`
---
-
-DROP TABLE IF EXISTS `location`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `location` (
-  `country` varchar(20) DEFAULT NULL,
-  `city` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `location`
---
-
-LOCK TABLES `location` WRITE;
-/*!40000 ALTER TABLE `location` DISABLE KEYS */;
-/*!40000 ALTER TABLE `location` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profile`
---
-
-DROP TABLE IF EXISTS `profile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `profile` (
-  `profileId` int DEFAULT NULL,
-  `description` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profile`
---
-
-LOCK TABLES `profile` WRITE;
-/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -67,10 +23,15 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `firstName` varchar(20) DEFAULT NULL,
-  `lastName` varchar(20) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `userId` int NOT NULL,
+  `firstName` varchar(30) NOT NULL,
+  `lastName` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `description` varchar(400) NOT NULL DEFAULT '',
+  `country` varchar(20) NOT NULL,
+  `city` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,6 +40,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Greger','Johnsson','gregerjohnsson@gmail.com','Han är Greger','Sweden','Stockholm'),(2,'Gregvald','Smith','thegregvald.smith@hotmail.com','Han är Gregvald','U.S.A','Dallas'),(3,'Gregér','Moreau','moreau.greg@yahoo.com','Han är Gregér','France','Bordeaux'),(4,'Gregelina','Berg','gregelina.berg@gmail.com','Hon är Gregelina','Sweden','Jönköping');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -91,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 11:09:47
+-- Dump completed on 2022-04-25 18:22:52
