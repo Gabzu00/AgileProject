@@ -1,19 +1,21 @@
 package com.example.oldiebutgoldie;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class loginController {
+public class mainController extends OldieButGoldieApp {
 
     @FXML
     private Button cancelButton;
@@ -27,8 +29,8 @@ public class loginController {
 
     public void loginButtonOnAction(ActionEvent event){
 
-        if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false){
-            validateLogin();
+        if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()){
+            validateLogin(event);
         }else {
             loginMessageLabel.setText("Please enter username and password");
         }
@@ -39,7 +41,7 @@ public class loginController {
         stage.close();
     }
 
-    public void validateLogin(){
+    public void validateLogin(ActionEvent event) {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -54,8 +56,16 @@ public class loginController {
             while(queryResult.next()){
                 if (queryResult.getInt(1) == 1){
                     loginMessageLabel.setText("Congratulations!");
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("mobileGUI.fxml"));
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(fxmlLoader.load());
+
+                    stage.setTitle("Liked!");
+                    stage.setScene(scene);
+                    stage.show();
                 }else{
-                    loginMessageLabel.setText("Invalide login. Please try again.");
+                    loginMessageLabel.setText("Invalid login. Please try again.");
                 }
             }
 
