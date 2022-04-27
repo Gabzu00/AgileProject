@@ -10,10 +10,11 @@ import javafx.stage.Stage;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OldieButGoldieAppTest {
+    private OldieButGoldieApp test;
 
     @BeforeEach
     void setUp() {
-        OldieButGoldieApp test = new OldieButGoldieApp();
+        test = new OldieButGoldieApp();
     }
 
     @Test

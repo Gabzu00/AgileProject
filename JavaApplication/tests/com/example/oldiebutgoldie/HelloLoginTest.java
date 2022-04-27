@@ -10,13 +10,14 @@ import javafx.stage.Stage;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HelloLoginTest {
+    private HelloLogin test;
 
     @BeforeEach
-    void setUp() {
-        HelloLogin test = new HelloLogin();
+    public void setUp() {
+        test = new HelloLogin();
     }
 
     @Test
-    void start() {
+    public void start() {
     }
 }
