@@ -18,6 +18,11 @@ public class OldieButGoldieApp extends Application {
         stage.show();
     }
 
+    public int testThis(int a, int b) {
+        int c = a + b;
+        return c;
+    }
+
     public static void main(String[] args) {
         launch();
     }

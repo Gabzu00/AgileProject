@@ -7,10 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OldieButGoldieAppTest {
     private OldieButGoldieApp test;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +23,8 @@ class OldieButGoldieAppTest {
     }
 
     @Test
-    void start() {
+    void testThisTest() {
+        int result = test.testThis(3, 4);
+        assertEquals(7, result);
     }
 }

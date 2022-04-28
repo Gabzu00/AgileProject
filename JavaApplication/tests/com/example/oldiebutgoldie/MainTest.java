@@ -3,7 +3,8 @@ package com.example.oldiebutgoldie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class HelloLoginTest {
+
+class MainTest {
     private Main test;
 
     @BeforeEach
