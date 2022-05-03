@@ -59,7 +59,7 @@
          <children>
             <ImageView fx:id="imageViewYes" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#switchToLikeScene" pickOnBounds="true" GridPane.columnIndex="1">
                <image>
-                  <Image url="@yes.png" />
+                  <Image url="@Images/Bock.png" />
                </image>
                <GridPane.margin>
                   <Insets />
@@ -67,7 +67,7 @@
             </ImageView>
             <ImageView fx:id="imageViewNo" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#switchToDidNotLikeScene" pickOnBounds="true">
                <image>
-                  <Image url="@no.png" />
+                  <Image url="@Images/no.png" />
                </image>
                <GridPane.margin>
                   <Insets />

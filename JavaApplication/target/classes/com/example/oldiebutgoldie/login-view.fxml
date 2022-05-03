@@ -16,12 +16,12 @@
          <children>
             <ImageView fitHeight="229.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Logga.jpg" />
+                  <Image url="@Images/Logga.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="167.0" fitWidth="229.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@OldPeople.jpg" />
+                  <Image url="@Images/OldPeople.jpg" />
                </image>
             </ImageView>
          </children>
@@ -32,7 +32,7 @@
          <children>
             <ImageView blendMode="DARKEN" fitHeight="52.0" fitWidth="56.0" layoutX="120.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Lås.png" />
+                  <Image url="@Images/Lås.png" />
                </image>
             </ImageView>
             <Label layoutX="31.0" layoutY="104.0" text="Username">

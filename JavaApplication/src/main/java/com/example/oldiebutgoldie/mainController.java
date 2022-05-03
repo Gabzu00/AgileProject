@@ -45,8 +45,8 @@ public class mainController extends OldieButGoldieApp {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user WHERE email = '" + usernameTextField.getText() + "'AND password ='" +
-                enterPasswordField.getText() + "'";
+        String verifyLogin = "SELECT count(1) FROM user WHERE email = '" + usernameTextField.getText() + "'AND aes_decrypt(password, 'Key123') ='"
+                + enterPasswordField.getText() + "'";
 
         try{
             Statement statement = connectDB.createStatement();
@@ -55,7 +55,6 @@ public class mainController extends OldieButGoldieApp {
 
             while(queryResult.next()){
                 if (queryResult.getInt(1) == 1){
-                    loginMessageLabel.setText("Congratulations!");
 
                     FXMLLoader fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("mobileGUI.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
