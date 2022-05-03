@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class OldieController {
@@ -39,5 +41,14 @@ public class OldieController {
         stage.setTitle("Did not like!");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private Text textFieldDescriptions (MouseEvent event) throws IOException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String verifyLogin = "SELECT * FROM user WHERE userId = 1;";
+        System.out.println(verifyLogin);
     }
 }
