@@ -33,13 +33,14 @@
 -->
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <GridPane fx:id="firstBaseGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.OldieController">
   <columnConstraints>
@@ -59,7 +60,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="imageViewYes" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#switchToLikeScene" pickOnBounds="true" GridPane.columnIndex="1">
+            <ImageView fx:id="imageViewYes" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#changePerson" pickOnBounds="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@Images/Bock.png" />
                </image>
@@ -82,17 +83,40 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="303.0" minHeight="10.0" prefHeight="300.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="303.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="301.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <ImageView fx:id="image" fitHeight="301.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@Images/Albert.jpg" />
+                  <Image url="@Images/Walter.png" />
                </image>
             </ImageView>
             <Line endX="186.2928924560547" endY="0.7928932309150696" scaleX="1.2" scaleY="3.0" startX="-100.0" startY="0.7928932309150696" translateX="21.0" translateY="150.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-            <Text fx:id="textFieldDescriptions" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1" />
+            <Label fx:id="labelName" onMouseMoved="#personInfo" prefHeight="32.0" prefWidth="74.0" text="Name" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <padding>
+                  <Insets left="3.0" />
+               </padding></Label>
+            <Label fx:id="labelAge" onMouseMoved="#personInfo" text="Age" translateX="-50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelDescription" alignment="TOP_LEFT" onMouseMoved="#personInfo" prefHeight="111.0" prefWidth="336.0" text="Description" wrapText="true" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="3.0" />
+               </padding>
+            </Label>
          </children>
       </GridPane>
    </children>
