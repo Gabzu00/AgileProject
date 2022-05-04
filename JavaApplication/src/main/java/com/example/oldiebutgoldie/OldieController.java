@@ -63,7 +63,7 @@ public class OldieController {
     }
 
     @FXML
-    public Person personInfo() throws SQLException {
+    public void personInfo() throws SQLException {
         DatabaseConnection db = new DatabaseConnection();
         Connection connection = db.getConnection();
         Statement stmt = connection.createStatement();
@@ -78,6 +78,5 @@ public class OldieController {
         labelName.setText(person.getFirstName());
         labelAge.setText(person.getAge());
         labelDescription.setText(person.getDescription());
-        return person;
     }
 }
