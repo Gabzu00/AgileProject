@@ -68,7 +68,7 @@
                   <Insets />
                </GridPane.margin>
             </ImageView>
-            <ImageView fx:id="imageViewNo" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#switchToDidNotLikeScene" pickOnBounds="true">
+            <ImageView fx:id="imageViewNo" fitHeight="152.0" fitWidth="168.0" onMouseClicked="#changePerson" pickOnBounds="true">
                <image>
                   <Image url="@Images/no.png" />
                </image>
@@ -94,19 +94,19 @@
                </image>
             </ImageView>
             <Line endX="186.2928924560547" endY="0.7928932309150696" scaleX="1.2" scaleY="3.0" startX="-100.0" startY="0.7928932309150696" translateX="21.0" translateY="150.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-            <Label fx:id="labelName" onMouseMoved="#personInfo" prefHeight="32.0" prefWidth="74.0" text="Name" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="labelName" onMouseClicked="#personInfo" prefHeight="32.0" prefWidth="99.0" text="Greger" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
                <padding>
                   <Insets left="3.0" />
                </padding></Label>
-            <Label fx:id="labelAge" onMouseMoved="#personInfo" text="Age" translateX="-50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="labelAge" onMouseClicked="#personInfo" text="80" translateX="-50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label fx:id="labelDescription" alignment="TOP_LEFT" onMouseMoved="#personInfo" prefHeight="111.0" prefWidth="336.0" text="Description" wrapText="true" GridPane.rowIndex="2">
+            <Label fx:id="labelDescription" alignment="TOP_LEFT" onMouseClicked="#personInfo" prefHeight="111.0" prefWidth="336.0" text="Jag gillar långa promenader på stranden, vin och en romantisk kväll." wrapText="true" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>

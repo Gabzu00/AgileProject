@@ -18,6 +18,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class OldieController {
 
@@ -32,6 +34,7 @@ public class OldieController {
     private Label labelAge;
     @FXML
     private Label labelDescription;
+
 
     @FXML
     public void switchToLikeScene(MouseEvent event) throws IOException {
@@ -56,18 +59,34 @@ public class OldieController {
     }
 
     @FXML
-    public void changePerson() {
-        URL path = OldieButGoldieApp.class.getResource("Images/Albert.jpg");
-        Image image2 = new Image (String.valueOf(path));
-        image.setImage(image2);
+    public void changePerson() throws SQLException {
+        Person person = personInfo();
+        int imageId = person.getId();
+        URL path2 = OldieButGoldieApp.class.getResource("Images/Albert.jpg");
+        URL path3 = OldieButGoldieApp.class.getResource("Images/greg.jpg");
+        URL path4 = OldieButGoldieApp.class.getResource("Images/leif.jpg");
+        Image image2 = new Image (String.valueOf(path2));
+        Image image3 = new Image (String.valueOf(path3));
+        Image image4 = new Image (String.valueOf(path4));
+        if (imageId == 2) {
+            image.setImage(image2);
+        }
+        else if (imageId == 3) {
+            image.setImage(image3);
+        }
+        else if (imageId == 4) {
+            image.setImage(image4);
+        }
     }
 
     @FXML
-    public void personInfo() throws SQLException {
+    public Person personInfo() throws SQLException {
+        Random rand = new Random();
+        int randId = rand.nextInt(2,5);
         DatabaseConnection db = new DatabaseConnection();
         Connection connection = db.getConnection();
         Statement stmt = connection.createStatement();
-        String SQL = "SELECT * FROM user WHERE userId = 1;";
+        String SQL = "SELECT * FROM user WHERE userId = " + randId + ";";
         ResultSet rs = stmt.executeQuery(SQL);
         rs.next();
         int userId = rs.getInt("userId");
@@ -78,5 +97,6 @@ public class OldieController {
         labelName.setText(person.getFirstName());
         labelAge.setText(person.getAge());
         labelDescription.setText(person.getDescription());
+        return person;
     }
 }
