@@ -5,12 +5,14 @@ public class Person {
     private String firstName;
     private String age;
     private String description;
+    private String picture;
 
-    public Person(int id, String firstName, String age, String description) {
+    public Person(int id, String firstName, String age, String description, String picture) {
         this.id = id;
         this.firstName = firstName;
         this.age = age;
         this.description = description;
+        this.picture = picture;
     }
 
     public int getId() {
@@ -43,5 +45,9 @@ public class Person {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPicture() {
+        return picture;
     }
 }

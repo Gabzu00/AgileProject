@@ -16,14 +16,19 @@ import java.util.Random;
 
 public class OldieButGoldieApp extends Application {
 
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
+
         FXMLLoader fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("mobileGUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         stage.setTitle("OldieButGoldie");
         stage.setScene(scene);
+
         stage.show();
+
+
     }
 
     public int testThis(int a, int b) {
@@ -31,7 +36,7 @@ public class OldieButGoldieApp extends Application {
         return c;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         launch();
     }
 }
