@@ -47,19 +47,19 @@
                </font>
             </Label>
             <PasswordField fx:id="enterPasswordField" layoutX="106.0" layoutY="154.0" prefHeight="26.0" prefWidth="173.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="35.0" layoutY="244.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: Black;" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="22.0" layoutY="210.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: Black;" text="Login" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font></Button>
-            <Button fx:id="cancelButton" layoutX="35.0" layoutY="297.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: Black;" text="Exit" textFill="WHITE">
+            <Button fx:id="cancelButton" layoutX="21.0" layoutY="312.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: Black;" text="Exit" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font></Button>
-            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="35.0" layoutY="203.0" prefHeight="22.0" prefWidth="249.0">
+            <Button layoutX="21.0" layoutY="261.0" mnemonicParsing="false" onAction="#createAccountForm" prefHeight="32.0" prefWidth="249.0" style="-fx-background-color: Black;" text="Sign up" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
-            </Label>
+            </Button>
          </children>
       </AnchorPane>
    </center>

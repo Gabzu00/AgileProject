@@ -36,11 +36,12 @@ public class OldieController {
     public Label labelAge;
     @FXML
     public Label labelDescription;
+    @FXML
+    private Button EditProfileButton;
 
 
     @FXML
     private void initialize() {
-        System.out.println("someNode: ");
         personInfo();
     }
 
@@ -58,7 +59,6 @@ public class OldieController {
     @FXML
     public void yesButton(MouseEvent event){
         personInfo();
-
     }
 
     @FXML
@@ -100,22 +100,44 @@ public class OldieController {
             Connection connection = db.getConnection();
             Statement stmt = connection.createStatement();
 
-            String SQL = "SELECT * FROM user WHERE userId = " + randId + ";";
-            ResultSet rs = stmt.executeQuery(SQL);
-            rs.next();
-            int userId = rs.getInt("userId");
+            String SQL1 = "SELECT image, age, description, profileId FROM profile WHERE profileId = " + randId + ";";
 
-            String picture = rs.getString("image");
-            String firstName = rs.getString("firstName");
-            String age = rs.getString("age");
-            String description = rs.getString("description");
+            ResultSet rs1 = stmt.executeQuery(SQL1);
+            rs1.next();
 
-            person = new Person(userId, firstName, age, description, picture);
+            int profileId = rs1.getInt("profileId");
+            String picture = rs1.getString("image");
+            String age = rs1.getString("age");
+            String description = rs1.getString("description");
+
+            String SQL2 = "SELECT firstName FROM registration WHERE profileId = " + randId + ";";
+
+            ResultSet rs2 = stmt.executeQuery(SQL2);
+            rs2.next();
+
+            String firstName = rs2.getString("firstName");
+
+            person = new Person(profileId, firstName, age, description, picture);
 
         }catch(Exception e){
             e.printStackTrace();
             e.getCause();
         }
+
+
         return person;
     }
+
+    public void editProfile(ActionEvent event) throws IOException {
+        Stage stage1 = (Stage) EditProfileButton.getScene().getWindow();
+        stage1.close();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("EditProfile.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Edit profile");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 }
