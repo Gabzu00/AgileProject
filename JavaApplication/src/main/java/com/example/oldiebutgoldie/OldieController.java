@@ -45,6 +45,7 @@ public class OldieController {
         personInfo();
     }
 
+
     @FXML
     public void switchToLikeScene(MouseEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("LikeScene.fxml"));
