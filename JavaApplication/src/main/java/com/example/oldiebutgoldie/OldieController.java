@@ -39,10 +39,12 @@ public class OldieController {
     @FXML
     private Button EditProfileButton;
 
-
     @FXML
     private void initialize() {
-        personInfo();
+        Random rand = new Random();
+        int randId = rand.nextInt(1, 5);
+
+        displayPersonInfo(personInfo(randId));
     }
 
 
@@ -59,7 +61,9 @@ public class OldieController {
 
     @FXML
     public void yesButton(MouseEvent event){
-        personInfo();
+        Random rand = new Random();
+        int randId = rand.nextInt(1, 5);
+        personInfo(randId);
     }
 
     @FXML
@@ -74,6 +78,84 @@ public class OldieController {
     }
 
     @FXML
+    public Person personInfo(int id) {
+        int randId = id;
+        Person person = null;
+
+        try {
+            person = createPerson(createSQL(connectToDatabase(), randId));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return person;
+    }
+
+    public Connection connectToDatabase() {
+        DatabaseConnection db = new DatabaseConnection();
+        Connection connection = db.getConnection();
+
+        return connection;
+    }
+
+    public ResultSet createSQL(Connection connection, int randId) throws SQLException {
+        Statement stmt = connection.createStatement();
+        String SQL = "SELECT * FROM user WHERE userId = " + randId + ";";
+        ResultSet rs = stmt.executeQuery(SQL);
+        rs.next();
+
+        return rs;
+    }
+
+    public int getUserId(ResultSet rs) throws SQLException {
+        int userId = rs.getInt("userId");
+
+        return userId;
+    }
+
+    public String getFirstName(ResultSet rs) throws SQLException {
+        String firstName = rs.getString("firstName");
+
+        return firstName;
+    }
+
+    public int getAge(ResultSet rs) throws SQLException {
+        int age = rs.getInt("age");
+
+        return age;
+    }
+
+    public String getDescription(ResultSet rs) throws SQLException {
+        String description = rs.getString("description");
+
+        return description;
+    }
+
+    public String getPicture(ResultSet rs) throws SQLException {
+        String picture = rs.getString("image");
+
+        return picture;
+    }
+
+    public Person createPerson(ResultSet rs) throws SQLException {
+        Person person = new Person();
+
+        person.setId(getUserId(rs));
+        person.setFirstName(getFirstName(rs));
+        person.setAge(getAge(rs));
+        person.setDescription(getDescription(rs));
+        person.setPicture(getPicture(rs));
+
+        return person;
+    }
+
+    public void displayPersonInfo(Person person) {
+        labelName.setText(person.getFirstName());
+        labelAge.setText(Integer.toString(person.getAge()));
+        labelDescription.setText(person.getDescription());
+    }
+
+    /*@FXML
     public Person personInfo() {
 
         Person person = personInfoLoad();
@@ -88,25 +170,26 @@ public class OldieController {
         image.setImage(setPicture.getImage());
 
         return person;
-    }
+    }*/
 
     @FXML
     public Person personInfoLoad() {
         Random rand = new Random();
         int randId = rand.nextInt(1, 5);
-        Person person = null;
-        DatabaseConnection db = new DatabaseConnection();
+
+        //DatabaseConnection db = new DatabaseConnection();
 
         try {
-            Connection connection = db.getConnection();
-            Statement stmt = connection.createStatement();
+            Person person = personInfo(randId);
+            //Connection connection = db.getConnection();
+            //Statement stmt = connection.createStatement();
 
-            String SQL1 = "SELECT image, age, description, profileId FROM profile WHERE profileId = " + randId + ";";
+            //String SQL1 = "SELECT image, age, description, profileId FROM profile WHERE profileId = " + randId + ";";
 
-            ResultSet rs1 = stmt.executeQuery(SQL1);
-            rs1.next();
+            //ResultSet rs1 = stmt.executeQuery(SQL1);
+            //rs1.next();
 
-            int profileId = rs1.getInt("profileId");
+            /*int profileId = rs1.getInt("profileId");
             String picture = rs1.getString("image");
             String age = rs1.getString("age");
             String description = rs1.getString("description");
@@ -116,17 +199,18 @@ public class OldieController {
             ResultSet rs2 = stmt.executeQuery(SQL2);
             rs2.next();
 
-            String firstName = rs2.getString("firstName");
+            String firstName = rs2.getString("firstName");*/
 
-            person = new Person(profileId, firstName, age, description, picture);
+            //person = new Person(profileId, firstName, age, description, picture);
+
+            return person;
 
         }catch(Exception e){
             e.printStackTrace();
             e.getCause();
         }
 
-
-        return person;
+        return null;
     }
 
     public void editProfile(ActionEvent event) throws IOException {

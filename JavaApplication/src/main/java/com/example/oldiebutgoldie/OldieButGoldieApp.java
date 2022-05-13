@@ -18,10 +18,16 @@ public class OldieButGoldieApp extends Application {
 
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("mobileGUI.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = null;
+
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         stage.setTitle("OldieButGoldie");
         stage.setScene(scene);
@@ -29,11 +35,6 @@ public class OldieButGoldieApp extends Application {
         stage.show();
 
 
-    }
-
-    public int testThis(int a, int b) {
-        int c = a + b;
-        return c;
     }
 
     public static void main(String[] args) throws SQLException {

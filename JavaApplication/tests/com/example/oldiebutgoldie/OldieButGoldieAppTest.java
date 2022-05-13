@@ -23,12 +23,6 @@ class OldieButGoldieAppTest {
     }
 
     @Test
-    void testThisTest() {
-        int result = test.testThis(3, 4);
-        assertEquals(7, result);
-    }
-
-    @Test
     void startTest() {
         assertThrows(javafx.fxml.LoadException.class, () -> test.start(stage));
     }

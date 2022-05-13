@@ -3,17 +3,11 @@ package com.example.oldiebutgoldie;
 public class Person {
     private int id;
     private String firstName;
-    private String age;
+    private int age;
     private String description;
     private String picture;
 
-    public Person(int id, String firstName, String age, String description, String picture) {
-        this.id = id;
-        this.firstName = firstName;
-        this.age = age;
-        this.description = description;
-        this.picture = picture;
-    }
+    public Person() {}
 
     public int getId() {
         return id;
@@ -31,11 +25,11 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -49,5 +43,9 @@ public class Person {
 
     public String getPicture() {
         return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
