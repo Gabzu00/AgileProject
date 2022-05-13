@@ -16,7 +16,6 @@ import java.util.Random;
 
 public class OldieButGoldieApp extends Application {
 
-
     @Override
     public void start(Stage stage) {
 
@@ -33,6 +32,8 @@ public class OldieButGoldieApp extends Application {
         stage.setScene(scene);
 
         stage.show();
+
+
 
 
     }

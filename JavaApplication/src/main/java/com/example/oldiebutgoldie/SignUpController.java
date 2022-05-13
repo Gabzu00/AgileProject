@@ -72,24 +72,18 @@ public class SignUpController {
             String Email = email.getText();
             String Password = password.getText();
 
-            String profileId = "select MAX(profileId) from registration";
+            String profileId = "select MAX(userId) from user";
             ResultSet getProfileId = statement.executeQuery(profileId);
             getProfileId.next();
 
-            String setProfileId = getProfileId.getString(1);
-            int profileIdPlusOne = Integer.parseInt(setProfileId) + 1;
+            int setProfileId = getProfileId.getInt(1);
+            int profileIdPlusOne = setProfileId + 1;
 
-            String insertFields = "insert into registration (firstName, lastName, email, password, profileId) VALUES ('";
+            String insertFields = "insert into user (firstName, lastName, email, password, userId) VALUES ('";
             String insertValues = firstname + "','" + lastname + "','" + Email + "',aes_encrypt('" + Password + "','Key123'),'" + profileIdPlusOne + "')";
             String insertToRegister = insertFields + insertValues;
 
             statement.executeUpdate(insertToRegister);
-
-            String insertFields2 = "insert into profile (profileId) VALUES ('";
-            String insertValues2 = profileIdPlusOne + "')";
-            String insertToRegister2 = insertFields2 + insertValues2;
-
-            statement.executeUpdate(insertToRegister2);
 
             registrationMessageLebel.setText("User registered successfully!");
 

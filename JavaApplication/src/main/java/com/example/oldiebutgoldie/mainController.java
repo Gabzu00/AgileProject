@@ -17,7 +17,8 @@ import java.sql.Statement;
 
 public class mainController extends OldieButGoldieApp {
 
-    public int globalId;
+
+    public static Person loginUser = null;
     @FXML
     private Button cancelButton;
     @FXML
@@ -42,30 +43,39 @@ public class mainController extends OldieButGoldieApp {
         stage.close();
     }
 
-    public void validateLogin(ActionEvent event) {
+    public Person validateLogin(ActionEvent event) {
+        Person person = new Person();
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM registration WHERE email = '" + usernameTextField.getText() + "'AND aes_decrypt(password, 'Key123') ='"
+        String verifyLogin = "SELECT count(1) FROM user WHERE email = '" + usernameTextField.getText() + "'AND aes_decrypt(password, 'Key123') ='"
                 + enterPasswordField.getText() + "'";
 
         try{
             Statement statement = connectDB.createStatement();
             ResultSet queryResult = statement.executeQuery(verifyLogin);
 
-
             while(queryResult.next()){
                 if (queryResult.getInt(1) == 1){
 
-                    String idQuery = "select profileId from registration where email ='" + usernameTextField.getText() + "'";
+                    String idQuery = "SELECT * FROM user WHERE email = '" + usernameTextField.getText() + "'";
 
-                    ResultSet getId = statement.executeQuery(idQuery);
-                    getId.next();
-                    String getProfileId = getId.getString(1);
-                    globalId = Integer.parseInt(getProfileId);
+                    ResultSet getData = statement.executeQuery(idQuery);
+                    getData.next();
+                    person.setFirstName(getData.getString("firstName"));
+                    person.setLastName(getData.getString("lastName"));
+                    person.setEmail(getData.getString("email"));
+                    person.setPassword(getData.getString("email"));
+                    person.setId(getData.getInt("userId"));
+                    person.setDescription(getData.getString("description"));
+                    person.setCountry(getData.getString("country"));
+                    person.setCity(getData.getString("city"));
+                    person.setPicture(getData.getString("image"));
+                    person.setAge(getData.getInt("age"));
 
+                    loginUser = person;
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("mobileGUI.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tutorial.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(fxmlLoader.load());
 
@@ -82,11 +92,11 @@ public class mainController extends OldieButGoldieApp {
             e.getCause();
         }
 
+        return person;
     }
 
     public void createAccountForm(){
         try{
-
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             stage.close();
 

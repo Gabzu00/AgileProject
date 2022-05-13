@@ -20,6 +20,6 @@ public class Main extends Application {
         primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
     }
 }

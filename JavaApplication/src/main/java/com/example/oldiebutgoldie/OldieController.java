@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -25,6 +24,9 @@ import java.util.Random;
 
 public class OldieController {
 
+    ArrayList<Integer> likedPeople = new ArrayList<>();
+    Person login = mainController.loginUser;
+    public int ID = login.getId();
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -40,9 +42,19 @@ public class OldieController {
     private Button EditProfileButton;
 
     @FXML
-    private void initialize() {
+    private void initialize(){
         Random rand = new Random();
-        int randId = rand.nextInt(1, 5);
+        int randId = rand.nextInt(1, idSize);
+
+        while (randId == ID) {
+            randId = rand.nextInt(1, idSize);
+        }
+
+        while (likedPeople.contains(randId)){
+            randId = rand.nextInt(1, idSize);
+        }
+
+        likedPeople.add(randId);
 
         displayPersonInfo(personInfo(randId));
     }
@@ -60,10 +72,38 @@ public class OldieController {
     }
 
     @FXML
-    public void yesButton(MouseEvent event){
-        Random rand = new Random();
-        int randId = rand.nextInt(1, 5);
-        personInfo(randId);
+    public void yesButton(){
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+        try{
+            Statement statement = connectDB.createStatement();
+
+            String getIDs = "select MAX(userId) from user";
+
+            ResultSet queryResult = statement.executeQuery(getIDs);
+            queryResult.next();
+            int idSize= queryResult.getInt(1);
+
+            Random rand = new Random();
+            int randId = rand.nextInt(1, idSize);
+
+            while (randId == ID) {
+                randId = rand.nextInt(1, idSize);
+            }
+
+            while (likedPeople.contains(randId)){
+                randId = rand.nextInt(1, idSize);
+            }
+
+            likedPeople.add(randId);
+
+
+            displayPersonInfo(personInfo(randId));
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
     }
 
     @FXML
@@ -153,64 +193,9 @@ public class OldieController {
         labelName.setText(person.getFirstName());
         labelAge.setText(Integer.toString(person.getAge()));
         labelDescription.setText(person.getDescription());
-    }
-
-    /*@FXML
-    public Person personInfo() {
-
-        Person person = personInfoLoad();
-
-
-        labelName.setText(person.getFirstName());
-        labelAge.setText(person.getAge());
-        labelDescription.setText(person.getDescription());
-
         URL path = OldieButGoldieApp.class.getResource(person.getPicture());
         ImageView setPicture = new ImageView (String.valueOf(path));
         image.setImage(setPicture.getImage());
-
-        return person;
-    }*/
-
-    @FXML
-    public Person personInfoLoad() {
-        Random rand = new Random();
-        int randId = rand.nextInt(1, 5);
-
-        //DatabaseConnection db = new DatabaseConnection();
-
-        try {
-            Person person = personInfo(randId);
-            //Connection connection = db.getConnection();
-            //Statement stmt = connection.createStatement();
-
-            //String SQL1 = "SELECT image, age, description, profileId FROM profile WHERE profileId = " + randId + ";";
-
-            //ResultSet rs1 = stmt.executeQuery(SQL1);
-            //rs1.next();
-
-            /*int profileId = rs1.getInt("profileId");
-            String picture = rs1.getString("image");
-            String age = rs1.getString("age");
-            String description = rs1.getString("description");
-
-            String SQL2 = "SELECT firstName FROM registration WHERE profileId = " + randId + ";";
-
-            ResultSet rs2 = stmt.executeQuery(SQL2);
-            rs2.next();
-
-            String firstName = rs2.getString("firstName");*/
-
-            //person = new Person(profileId, firstName, age, description, picture);
-
-            return person;
-
-        }catch(Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-
-        return null;
     }
 
     public void editProfile(ActionEvent event) throws IOException {

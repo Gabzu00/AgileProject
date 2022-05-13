@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="495.0" prefWidth="522.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.SignUpController">
+<AnchorPane prefHeight="468.0" prefWidth="522.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.SignUpController">
    <children>
       <AnchorPane layoutX="116.0" prefHeight="118.0" prefWidth="404.0" style="-fx-background-color: Black;">
          <children>
@@ -42,7 +42,7 @@
          </font>
       </Label>
       <TextField fx:id="email" layoutX="140.0" layoutY="294.0" prefHeight="35.0" promptText="Enter here" />
-      <AnchorPane layoutX="-4.0" layoutY="118.0" prefHeight="378.0" prefWidth="122.0" style="-fx-background-color: black;">
+      <AnchorPane layoutX="-4.0" layoutY="118.0" prefHeight="387.0" prefWidth="122.0" style="-fx-background-color: black;">
          <children>
             <Label alignment="BOTTOM_LEFT" layoutX="-145.0" layoutY="74.0" prefHeight="205.0" prefWidth="262.0" rotate="-90.0" text="OldieButGoldie" textFill="WHITE">
                <font>

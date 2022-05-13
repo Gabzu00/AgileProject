@@ -3,9 +3,14 @@ package com.example.oldiebutgoldie;
 public class Person {
     private int id;
     private String firstName;
+    private String lastName;
     private int age;
     private String description;
     private String picture;
+    private String email;
+    private String password;
+    private String country;
+    private String city;
 
     public Person() {}
 
@@ -45,7 +50,47 @@ public class Person {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(String picture){
         this.picture = picture;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }
