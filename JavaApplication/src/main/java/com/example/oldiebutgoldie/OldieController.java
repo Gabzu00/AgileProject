@@ -1,17 +1,11 @@
 package com.example.oldiebutgoldie;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -23,9 +17,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class OldieController {
-    private Stage stage;
-    private Scene scene;
-    private FXMLLoader fxmlLoader;
     @FXML
     public ImageView image;
     @FXML
@@ -37,9 +28,9 @@ public class OldieController {
     @FXML
     private Button EditProfileButton;
 
-    private ArrayList<Integer> passedUsers = new ArrayList<>();
+    private final ArrayList<Integer> passedUsers = new ArrayList<>();
 
-    private Person login = mainController.loginUser;
+    private final Person login = mainController.loginUser;
 
     @FXML
     private void initialize(){
@@ -72,7 +63,7 @@ public class OldieController {
         return idSize;
     }
 
-    public boolean checkIfMoreUsers(int maxUserId, int loginId) {
+    public boolean checkIfMoreUsers(int maxUserId) {
         boolean moreUsers = false;
 
         for (int i = 1; i <= maxUserId; i++) {
@@ -91,7 +82,7 @@ public class OldieController {
         Random rand = new Random();
         int randId = rand.nextInt(1, maxUserId + 1);
 
-        boolean moreUsers = checkIfMoreUsers(maxUserId, randId);
+        boolean moreUsers = checkIfMoreUsers(maxUserId);
 
         if (moreUsers) {
             while (randId == login.getId() || this.passedUsers.contains(randId)) {
@@ -113,7 +104,7 @@ public class OldieController {
     }
 
     @FXML
-    public void noButton() throws IOException{
+    public void noButton() {
         int randId = generateRandomId();
         this.passedUsers.add(randId);
 
@@ -122,9 +113,10 @@ public class OldieController {
 
     @FXML
     public void noMoreUsers() {
+        Stage stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NoMoreUsersScene.fxml"));
         stage = (Stage)image.getScene().getWindow();
-        Scene scene = null;
+        Scene scene;
 
         try {
             scene = new Scene(fxmlLoader.load());
@@ -139,8 +131,7 @@ public class OldieController {
     }
 
     @FXML
-    public Person personInfo(int id) {
-        int randId = id;
+    public Person personInfo(int randId) {
         Person person = null;
 
         try {
@@ -154,9 +145,8 @@ public class OldieController {
 
     public Connection connectToDatabase() {
         DatabaseConnection db = new DatabaseConnection();
-        Connection connection = db.getConnection();
 
-        return connection;
+        return db.getConnection();
     }
 
     public ResultSet createSQL(Connection connection, int randId) throws SQLException {
@@ -189,7 +179,7 @@ public class OldieController {
         image.setImage(setPicture.getImage());
     }
 
-    public void editProfile(ActionEvent event) throws IOException {
+    public void editProfile() throws IOException {
         Stage stage1 = (Stage) EditProfileButton.getScene().getWindow();
         stage1.close();
 
@@ -202,32 +192,27 @@ public class OldieController {
     }
 
     public int getUserId(ResultSet rs) throws SQLException {
-        int userId = rs.getInt("userId");
 
-        return userId;
+        return rs.getInt("userId");
     }
 
     public String getFirstName(ResultSet rs) throws SQLException {
-        String firstName = rs.getString("firstName");
 
-        return firstName;
+        return rs.getString("firstName");
     }
 
     public int getAge(ResultSet rs) throws SQLException {
-        int age = rs.getInt("age");
 
-        return age;
+        return rs.getInt("age");
     }
 
     public String getDescription(ResultSet rs) throws SQLException {
-        String description = rs.getString("description");
 
-        return description;
+        return rs.getString("description");
     }
 
     public String getPicture(ResultSet rs) throws SQLException {
-        String picture = rs.getString("image");
 
-        return picture;
+        return rs.getString("image");
     }
 }

@@ -38,7 +38,7 @@ public class mainController extends OldieButGoldieApp {
         }
     }
 
-    public void cancelButtonOnAction(ActionEvent event){
+    public void cancelButtonOnAction(){
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
