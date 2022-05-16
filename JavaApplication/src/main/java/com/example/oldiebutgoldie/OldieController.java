@@ -168,36 +168,6 @@ public class OldieController {
         return rs;
     }
 
-    public int getUserId(ResultSet rs) throws SQLException {
-        int userId = rs.getInt("userId");
-
-        return userId;
-    }
-
-    public String getFirstName(ResultSet rs) throws SQLException {
-        String firstName = rs.getString("firstName");
-
-        return firstName;
-    }
-
-    public int getAge(ResultSet rs) throws SQLException {
-        int age = rs.getInt("age");
-
-        return age;
-    }
-
-    public String getDescription(ResultSet rs) throws SQLException {
-        String description = rs.getString("description");
-
-        return description;
-    }
-
-    public String getPicture(ResultSet rs) throws SQLException {
-        String picture = rs.getString("image");
-
-        return picture;
-    }
-
     public Person createPerson(ResultSet rs) throws SQLException {
         Person person = new Person();
 
@@ -231,4 +201,33 @@ public class OldieController {
         primaryStage.show();
     }
 
+    public int getUserId(ResultSet rs) throws SQLException {
+        int userId = rs.getInt("userId");
+
+        return userId;
+    }
+
+    public String getFirstName(ResultSet rs) throws SQLException {
+        String firstName = rs.getString("firstName");
+
+        return firstName;
+    }
+
+    public int getAge(ResultSet rs) throws SQLException {
+        int age = rs.getInt("age");
+
+        return age;
+    }
+
+    public String getDescription(ResultSet rs) throws SQLException {
+        String description = rs.getString("description");
+
+        return description;
+    }
+
+    public String getPicture(ResultSet rs) throws SQLException {
+        String picture = rs.getString("image");
+
+        return picture;
+    }
 }
