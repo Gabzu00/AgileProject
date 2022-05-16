@@ -30,7 +30,6 @@ public class OldieButGoldieApp extends Application {
 
         stage.setTitle("OldieButGoldie");
         stage.setScene(scene);
-
         stage.show();
 
 

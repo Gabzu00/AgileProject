@@ -19,7 +19,7 @@ public class tutorialController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
 
-        stage.setTitle("Liked!");
+        stage.setTitle("OldieButGoldie");
         stage.setScene(scene);
         stage.show();
     }

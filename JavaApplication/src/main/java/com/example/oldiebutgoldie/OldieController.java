@@ -23,10 +23,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class OldieController {
-
-    ArrayList<Integer> likedPeople = new ArrayList<>();
-    Person login = mainController.loginUser;
-    public int ID = login.getId();
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -41,80 +37,105 @@ public class OldieController {
     @FXML
     private Button EditProfileButton;
 
+    private ArrayList<Integer> passedUsers = new ArrayList<>();
+
+    private Person login = mainController.loginUser;
+
     @FXML
     private void initialize(){
-        Random rand = new Random();
-        int randId = rand.nextInt(1, idSize);
+        this.passedUsers.add(login.getId());
+        int randId = generateRandomId();
 
-        while (randId == ID) {
-            randId = rand.nextInt(1, idSize);
-        }
-
-        while (likedPeople.contains(randId)){
-            randId = rand.nextInt(1, idSize);
-        }
-
-        likedPeople.add(randId);
+        this.passedUsers.add(randId);
 
         displayPersonInfo(personInfo(randId));
     }
 
+    public int getMaxUserId() {
+        Connection connection = connectToDatabase();
+        int idSize = 0;
 
-    @FXML
-    public void switchToLikeScene(MouseEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("LikeScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load());
-
-        stage.setTitle("Liked!");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void yesButton(){
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-        try{
-            Statement statement = connectDB.createStatement();
+        try {
+            Statement statement = connection.createStatement();
 
             String getIDs = "select MAX(userId) from user";
 
             ResultSet queryResult = statement.executeQuery(getIDs);
             queryResult.next();
-            int idSize= queryResult.getInt(1);
+            idSize = queryResult.getInt(1);
 
-            Random rand = new Random();
-            int randId = rand.nextInt(1, idSize);
-
-            while (randId == ID) {
-                randId = rand.nextInt(1, idSize);
-            }
-
-            while (likedPeople.contains(randId)){
-                randId = rand.nextInt(1, idSize);
-            }
-
-            likedPeople.add(randId);
-
-
-            displayPersonInfo(personInfo(randId));
-        }catch(Exception e){
+        }catch(Exception e) {
             e.printStackTrace();
             e.getCause();
         }
 
+        return idSize;
+    }
+
+    public boolean checkIfMoreUsers(int maxUserId, int loginId) {
+        boolean moreUsers = false;
+
+        for (int i = 1; i <= maxUserId; i++) {
+            if (!this.passedUsers.contains(i)) {
+                moreUsers = true;
+                break;
+            }
+        }
+
+        return moreUsers;
+    }
+
+    public int generateRandomId() {
+        int maxUserId = getMaxUserId();
+
+        Random rand = new Random();
+        int randId = rand.nextInt(1, maxUserId + 1);
+
+        boolean moreUsers = checkIfMoreUsers(maxUserId, randId);
+
+        if (moreUsers) {
+            while (randId == login.getId() || this.passedUsers.contains(randId)) {
+                randId = rand.nextInt(1, maxUserId + 1);
+            }
+        } else {
+            noMoreUsers();
+        }
+
+        return randId;
     }
 
     @FXML
-    public void noButton(MouseEvent event) throws IOException{
-        fxmlLoader = new FXMLLoader(OldieButGoldieApp.class.getResource("DidNotLikeScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load());
+    public void yesButton(){
+        int randId = generateRandomId();
+        this.passedUsers.add(randId);
 
-        stage.setTitle("Did not like!");
+        displayPersonInfo(personInfo(randId));
+    }
+
+    @FXML
+    public void noButton() throws IOException{
+        int randId = generateRandomId();
+        this.passedUsers.add(randId);
+
+        displayPersonInfo(personInfo(randId));
+    }
+
+    @FXML
+    public void noMoreUsers() {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NoMoreUsersScene.fxml"));
+        stage = (Stage)image.getScene().getWindow();
+        Scene scene = null;
+
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        stage.setTitle("No more users to view");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     @FXML
