@@ -34,7 +34,7 @@ public class mainController extends OldieButGoldieApp {
         if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()){
             validateLogin(event);
         }else {
-            loginMessageLabel.setText("Please enter username and password");
+            loginMessageLabel.setText("Please enter email and password");
         }
     }
 
@@ -79,7 +79,7 @@ public class mainController extends OldieButGoldieApp {
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(fxmlLoader.load());
 
-                    stage.setTitle("Liked!");
+                    stage.setTitle("OldieButGoldie");
                     stage.setScene(scene);
                     stage.show();
                 }else{
@@ -103,7 +103,7 @@ public class mainController extends OldieButGoldieApp {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SignUp.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage primaryStage = new Stage();
-            primaryStage.setTitle("Login");
+            primaryStage.setTitle("OldieButGoldie");
             primaryStage.setScene(scene);
             primaryStage.show();
 

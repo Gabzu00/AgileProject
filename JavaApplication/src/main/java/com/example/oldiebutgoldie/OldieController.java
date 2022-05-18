@@ -124,7 +124,7 @@ public class OldieController {
             throw new RuntimeException(e);
         }
 
-        stage.setTitle("No more users to view");
+        stage.setTitle("OldieButGoldie");
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
@@ -186,7 +186,7 @@ public class OldieController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("EditProfile.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Edit profile");
+        primaryStage.setTitle("OldieButGoldie");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

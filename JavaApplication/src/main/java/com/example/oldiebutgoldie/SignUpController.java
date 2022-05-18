@@ -54,7 +54,7 @@ public class SignUpController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Login");
+        primaryStage.setTitle("OldieButGoldie");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(true);

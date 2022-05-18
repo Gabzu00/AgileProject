@@ -38,7 +38,7 @@ public class EditProfileController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mobileGUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Edit profile");
+        primaryStage.setTitle("OldieButGoldie");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
