@@ -35,12 +35,12 @@
                   <Image url="@Images/Lås.png" />
                </image>
             </ImageView>
-            <Label layoutX="31.0" layoutY="104.0" text="Username">
+            <Label layoutX="31.0" layoutY="104.0" text="Email">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" layoutX="106.0" layoutY="100.0" prefHeight="26.0" prefWidth="173.0" promptText="Username" />
+            <TextField fx:id="usernameTextField" layoutX="106.0" layoutY="100.0" prefHeight="26.0" prefWidth="173.0" promptText="Email" />
             <Label layoutX="33.0" layoutY="158.0" text="Password">
                <font>
                   <Font size="13.0" />
