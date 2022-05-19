@@ -172,11 +172,22 @@ public class OldieController {
 
     public void displayPersonInfo(Person person) {
         labelName.setText(person.getFirstName());
-        labelAge.setText(Integer.toString(person.getAge()));
+        if (person.getAge() == 0){
+            labelAge.setText("");
+        }else{
+            labelAge.setText(Integer.toString(person.getAge()));
+        }
         labelDescription.setText(person.getDescription());
-        URL path = OldieButGoldieApp.class.getResource(person.getPicture());
-        ImageView setPicture = new ImageView (String.valueOf(path));
-        image.setImage(setPicture.getImage());
+
+
+        if (person.getPicture() != null){
+            URL path = OldieButGoldieApp.class.getResource(person.getPicture());
+            ImageView setPicture = new ImageView (String.valueOf(path));
+            image.setImage(setPicture.getImage());
+        }else{
+            image.setImage(null);
+        }
+
     }
 
     public void editProfile() throws IOException {
