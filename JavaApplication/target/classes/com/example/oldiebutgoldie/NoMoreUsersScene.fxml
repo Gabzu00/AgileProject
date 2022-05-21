@@ -40,6 +40,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.noUsersController">
    <children>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="84.0" layoutY="43.0" onMouseClicked="#bellButton" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@Images/Bell.png" />
+         </image>
+      </ImageView>
       <Text layoutX="19.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No more users ">
          <font>
             <Font size="44.0" />

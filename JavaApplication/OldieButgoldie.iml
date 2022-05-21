@@ -12,7 +12,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="java" level="project" />
-    <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.28" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.29" level="project" />
@@ -37,5 +36,6 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:17.0.1" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
   </component>
 </module>

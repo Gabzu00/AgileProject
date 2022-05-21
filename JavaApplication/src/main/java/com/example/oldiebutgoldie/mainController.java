@@ -65,7 +65,7 @@ public class mainController extends OldieButGoldieApp {
                     person.setFirstName(getData.getString("firstName"));
                     person.setLastName(getData.getString("lastName"));
                     person.setEmail(getData.getString("email"));
-                    person.setPassword(getData.getString("email"));
+                    person.setPassword(getData.getString("password"));
                     person.setId(getData.getInt("userId"));
                     person.setDescription(getData.getString("description"));
                     person.setCountry(getData.getString("country"));

@@ -43,7 +43,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="firstBaseGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="335.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.OldieController">
+<GridPane fx:id="firstBaseGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="335.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oldiebutgoldie.OldieController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -100,7 +100,7 @@
                <padding>
                   <Insets left="3.0" />
                </padding></Label>
-            <Label fx:id="labelAge" translateX="-50.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="labelAge" translateX="-50.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
@@ -117,6 +117,19 @@
                </padding>
             </Label>
             <Button fx:id="EditProfileButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#editProfile" prefHeight="76.0" prefWidth="335.0" style="-fx-background-color: Black;" text="Edit your profile" textFill="WHITE" GridPane.rowIndex="3" />
+            <ImageView fx:id="notificationBell" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#bellButton" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@Images/Bell.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelLastName" prefHeight="32.0" prefWidth="120.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="120.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </children>
