@@ -1,6 +1,5 @@
 package com.example.oldiebutgoldie;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,7 +49,7 @@ public class EditProfileController {
 
         try {
             Statement statement = connection.createStatement();
-            Person getData = mainController.loginUser;
+            Person getData = MainController.loginUser;
 
             String age = ageLabel.getText();
             String city = cityLabel.getText();

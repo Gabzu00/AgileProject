@@ -38,7 +38,7 @@ public class OldieController {
 
     public final ArrayList<Integer> matches = new ArrayList<>();
 
-    private final Person login = mainController.loginUser;
+    private final Person login = MainController.loginUser;
 
     @FXML
     private void initialize(){
@@ -278,7 +278,7 @@ public class OldieController {
 
 
         if (person.getPicture() != null){
-            URL path = OldieButGoldieApp.class.getResource(person.getPicture());
+            URL path = Main.class.getResource(person.getPicture());
             ImageView setPicture = new ImageView (String.valueOf(path));
             image.setImage(setPicture.getImage());
         }else{

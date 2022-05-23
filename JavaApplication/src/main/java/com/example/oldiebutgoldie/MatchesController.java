@@ -3,7 +3,6 @@ package com.example.oldiebutgoldie;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class MatchesController implements Initializable {
     @FXML
     public ChoiceBox<String> choiceBox;
 
-    private final Person login = mainController.loginUser;
+    private final Person login = MainController.loginUser;
 
 
     @FXML

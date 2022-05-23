@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class mainController extends OldieButGoldieApp {
+public class MainController extends Main {
 
 
     public static Person loginUser = null;
